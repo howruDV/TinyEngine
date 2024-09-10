@@ -60,7 +60,7 @@ void CElfilisD_Resist::Enter_Step()
         GetOwner()->Transform()->SetWorldPos(ELFFSM->GetMapFloorOffset());
         GetOwner()->Transform()->SetWorldRotation(Vec3());
 
-        ELFFSM->SetGlobalState(true);
+        ELFFSM->SetStateLock(true);
 
         CBossMgr::GetBossFlowMgr()->ChangeFlow(BossLevelFlow::DemoPlay);
 
@@ -193,14 +193,14 @@ void CElfilisD_Resist::Progress()
 
     if (bSuccess)
     {
-        ELFFSM->SetGlobalState(false);
+        ELFFSM->SetStateLock(false);
         ELFFSM->ChangeStateGroup(ElfilisStateGroup::DEMO, L"DEMO_RESIST_FAIL");
     }
     else
     {
         if (m_AccTime > 10.f)
         {
-            ELFFSM->SetGlobalState(false);
+            ELFFSM->SetStateLock(false);
             ELFFSM->ChangeStateGroup(ElfilisStateGroup::DEMO, L"DEMO_RESIST_SUCCESS");
         }
     }

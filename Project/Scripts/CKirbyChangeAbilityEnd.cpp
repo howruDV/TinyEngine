@@ -23,7 +23,7 @@ void CKirbyChangeAbilityEnd::tick()
     case AbilityCopyType::SWORD: {
         if (PLAYER->Animator()->IsFinish())
         {
-            PLAYERFSM->SetGlobalState(false);
+            PLAYERFSM->SetStateLock(false);
             ChangeState(L"IDLE");
         }
     }
@@ -31,7 +31,7 @@ void CKirbyChangeAbilityEnd::tick()
     case AbilityCopyType::SLEEP: {
         if (PLAYER->Animator()->IsFinish())
         {
-            PLAYERFSM->SetGlobalState(false);
+            PLAYERFSM->SetStateLock(false);
             ChangeState(L"IDLE_START");
         }
     }
@@ -51,7 +51,7 @@ void CKirbyChangeAbilityEnd::Enter()
     PLAYERCTRL->LockJump();
     PLAYERCTRL->LockMove();
 
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true);
 }
 

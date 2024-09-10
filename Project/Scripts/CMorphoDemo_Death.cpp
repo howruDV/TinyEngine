@@ -61,7 +61,7 @@ void CMorphoDemo_Death::Enter_Step()
         GetOwner()->Animator()->SetPlay(false);
         m_AccTime = 0.f;
 
-        MRPFSM->SetGlobalState(true);
+        MRPFSM->SetStateLock(true);
 
         CBossMgr::GetBossFlowMgr()->ChangeFlow(BossLevelFlow::Death);
         CBossMgr::GetBossFlowMgr()->FadeOutBGM(0.5f);
@@ -195,7 +195,7 @@ void CMorphoDemo_Death::End()
 
     if (GetOwner()->Animator()->IsFinish())
     {
-        MRPFSM->SetGlobalState(false);
+        MRPFSM->SetStateLock(false);
         CBossMgr::GetBossFlowMgr()->ChangeFlow(BossLevelFlow::Clear);
     }
 }

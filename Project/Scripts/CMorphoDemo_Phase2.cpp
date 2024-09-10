@@ -53,7 +53,7 @@ void CMorphoDemo_Phase2::Enter_Step()
         GetOwner()->Rigidbody()->SetUseGravity(true);
 
         GetOwner()->Rigidbody()->SetVelocity(Vec3(0.f, 5.f, 0.f));
-        MRPFSM->SetGlobalState(true);
+        MRPFSM->SetStateLock(true);
 
         // Sound
         wstring Sound = L"sound\\wav\\CharaMetaknight\\0027_Damage.wav";
@@ -151,7 +151,7 @@ void CMorphoDemo_Phase2::Progress()
 
     if (GetOwner()->Animator()->IsFinish())
     {
-        MRPFSM->SetGlobalState(false);
+        MRPFSM->SetStateLock(false);
         MRPFSM->SetPattern(MorphoPatternType::Demo_TeleportDoubleSword);
         MRPFSM->ProcPatternStep();
     }

@@ -21,7 +21,7 @@ void CKirbyDropObjectStart::tick()
     case ObjectCopyType::LIGHT: {
         if (PLAYER->Animator()->IsFinish())
         {
-            PLAYERFSM->SetGlobalState(false);
+            PLAYERFSM->SetStateLock(false);
             ChangeState(L"DROP_OBJECT");
         }
     }
@@ -34,7 +34,7 @@ void CKirbyDropObjectStart::Enter()
     GamePlayStatic::Play2DSound(L"sound\\wav\\HeroBasic\\DropObject.wav", 1, KIRBY_EFFECTSOUND);
 
     PLAYERFSM->ChangeObjectCopy(ObjectCopyType::NONE);
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true);
     PLAYERFSM->GetPrevObject()->DropObjectStartEnter();
 }

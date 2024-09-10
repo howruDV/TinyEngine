@@ -16,7 +16,7 @@ void CKirbySwallowStart::tick()
 {
     if (PLAYER->Animator()->IsFinish())
     {
-        PLAYERFSM->SetGlobalState(false);
+        PLAYERFSM->SetStateLock(false);
         ChangeState(L"SWALLOW_END");
     }
 }
@@ -25,7 +25,7 @@ void CKirbySwallowStart::Enter()
 {
     // 변신 중일 땐 커비가 이미시브 효과를 받지않도록 한다.
     PLAYERFSM->SetSkrr(true);
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true);
 
     // 커비 SwallowStart 애니메이션 재생

@@ -37,7 +37,7 @@ void CElfilisD_Roar::tick()
 
     if (GetOwner()->Animator()->IsFinish())
     {
-        ELFFSM->SetGlobalState(false);
+        ELFFSM->SetStateLock(false);
         ELFFSM->SetPattern(ElfilisPatternType::Appear2);
         ELFFSM->ProcPatternStep();
     }
@@ -48,7 +48,7 @@ void CElfilisD_Roar::Enter()
     GetOwner()->Animator()->Play(ANIMPREFIX("Roar"), false);
     m_bFrmEnter = true;
 
-    ELFFSM->SetGlobalState(true);
+    ELFFSM->SetStateLock(true);
 
     // Camera : È®´ë, ¼ÎÀÌÅ©
     CAMERACTRL->SetLock(false);

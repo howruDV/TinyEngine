@@ -69,7 +69,7 @@ CElfilisFSM::~CElfilisFSM()
 void CElfilisFSM::ResetFSM()
 {
     // FSM setting clear
-    SetGlobalState(false);
+    SetStateLock(false);
     SetPattern(ElfilisPatternType::NONE);
     SetResist(false);
     ClearComboLevel();

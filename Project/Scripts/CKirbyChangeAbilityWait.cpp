@@ -13,14 +13,14 @@ void CKirbyChangeAbilityWait::tick()
 {
     if (KEY_TAP(KEY_ATK))
     {
-        PLAYERFSM->SetGlobalState(false);
+        PLAYERFSM->SetStateLock(false);
         ChangeState(L"CHANGE_ABILITY_END");
     }
 }
 
 void CKirbyChangeAbilityWait::Enter()
 {
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true);
 
     // 애니메이션 재생

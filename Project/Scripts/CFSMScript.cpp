@@ -9,7 +9,7 @@ CFSMScript::CFSMScript(SCRIPT_TYPE _ScriptType)
     , m_Unit(nullptr)
     , m_CurState(nullptr)
     , m_PrevState(nullptr)
-    , m_bGlobalState(false)
+    , m_bStateLock(false)
 {
 }
 
@@ -18,7 +18,7 @@ CFSMScript::CFSMScript(const CFSMScript& _Origin)
     , m_Unit(nullptr)
     , m_CurState(nullptr)
     , m_PrevState(nullptr)
-    , m_bGlobalState(false)
+    , m_bStateLock(false)
 {
     map<wstring, CState*>::const_iterator iter = _Origin.m_mapState.begin();
 
@@ -90,7 +90,7 @@ void CFSMScript::DeleteState(const wstring& _StateKey)
 
 void CFSMScript::ChangeState(const wstring& _strState)
 {
-    if (m_bGlobalState)
+    if (m_bStateLock)
         return;
 
     // 1. next state check

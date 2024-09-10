@@ -24,7 +24,7 @@ void CKirbyChangeObject::tick()
     case ObjectCopyType::LIGHT: {
         if (PLAYER->Animator()->IsFinish())
         {
-            PLAYERFSM->SetGlobalState(false);
+            PLAYERFSM->SetStateLock(false);
             ChangeState(L"CHANGE_OBJECT_END");
         }
     }
@@ -36,7 +36,7 @@ void CKirbyChangeObject::Enter()
 {
     GamePlayStatic::Play2DSound(L"sound\\wav\\HeroBasic\\0000.wav", 1, KIRBY_EFFECTSOUND);
 
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->GetNextObject()->ChangeObjectEnter();
 
     // 변신 중일 땐 커비가 이미시브 효과를 받지않도록 한다.

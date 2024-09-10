@@ -64,13 +64,12 @@ float CUnitScript::DamageProc()
     {
         switch (iter->Type)
         {
-        case DAMAGE_TYPE::NORMAL:
-        {
+        case DAMAGE_TYPE::NORMAL: {
             CurDamage += iter->Damage;
             m_HitDir += iter->HitDir;
             iter = m_HitHistory.erase(iter);
         }
-            break;
+        break;
 
         case DAMAGE_TYPE::DOT: {
             iter->Acc += DT;
@@ -87,8 +86,6 @@ float CUnitScript::DamageProc()
             {
                 iter = m_HitHistory.erase(iter);
             }
-
-
         }
         break;
         }

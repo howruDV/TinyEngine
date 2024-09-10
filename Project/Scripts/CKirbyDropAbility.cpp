@@ -89,7 +89,7 @@ void CKirbyDropAbility::tick()
     // Change State
     if (GetOwner()->Animator()->IsFinish())
     {
-        PLAYERFSM->SetGlobalState(false);
+        PLAYERFSM->SetStateLock(false);
         if (PLAYERCTRL->IsGround())
         {
             ChangeState(L"IDLE");
@@ -109,7 +109,7 @@ void CKirbyDropAbility::Enter()
 
     // Common Process
     // ---------------
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true);
     PLAYERFSM->ChangeAbilityCopy(AbilityCopyType::NORMAL);
 

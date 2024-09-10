@@ -92,7 +92,7 @@ void CKirbyAttackEnd::tick()
                 }
 
                 // release global state (ability drop)
-                PLAYERFSM->SetGlobalState(false);
+                PLAYERFSM->SetStateLock(false);
 
                 // change state
                 if (PLAYERCTRL->IsGround())

@@ -40,7 +40,7 @@ void CElfilisD_Jump::Enter_Step()
         GetOwner()->Animator()->Play(ANIMPREFIX("JumpReady"), false, false, 2.5f, 0.3f);
         m_PrevDrag = GetOwner()->Rigidbody()->GetDrag();
 
-        ELFFSM->SetGlobalState(true);
+        ELFFSM->SetStateLock(true);
 
         // Camera : µÚ·Î
         CAMERACTRL->FixedView(false, Vec3(-78.53f, 131.92f, -91.44f));
@@ -130,7 +130,7 @@ void CElfilisD_Jump::End()
 {
     if (GetOwner()->Animator()->IsFinish())
     {
-        ELFFSM->SetGlobalState(false);
+        ELFFSM->SetStateLock(false);
         ELFFSM->ChangeStateGroup(ElfilisStateGroup::DEMO, L"DEMO_APPEAR2_ROAR");
     }
 }

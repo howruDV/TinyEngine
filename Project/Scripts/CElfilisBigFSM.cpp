@@ -98,7 +98,7 @@ void CElfilisBigFSM::OffWeaponCollider()
 
 void CElfilisBigFSM::ChangeState(const wstring& _strState)
 {
-    if (m_bGlobalState)
+    if (m_bStateLock)
         return;
 
     // 1. next state check

@@ -45,7 +45,7 @@ void CElfilisD_ResistFail::Enter_Step()
         m_AccTime = 0.f;
 
         ELFFSM->SetResist(true);
-        ELFFSM->SetGlobalState(true);
+        ELFFSM->SetStateLock(true);
 
         // Sound
         // Sound
@@ -146,7 +146,7 @@ void CElfilisD_ResistFail::Progress()
             m_bFrmEnter = false;
         }
 
-        ELFFSM->SetGlobalState(false);
+        ELFFSM->SetStateLock(false);
         CBossMgr::GetBossFlowMgr()->ChangeFlow(BossLevelFlow::Clear);
     }
 }

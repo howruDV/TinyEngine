@@ -17,14 +17,14 @@ void CKirbyDamage::tick()
 
     if (m_Duration < m_Acc)
     {
-        PLAYERFSM->SetGlobalState(false);
+        PLAYERFSM->SetStateLock(false);
         ChangeState(L"BACKJUMP");
     }
 }
 
 void CKirbyDamage::Enter()
 {
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
 
     // 애니메이션 재생
     PLAYER->Animator()->Play(ANIMPREFIX("Damage"), true, false, 1.f);

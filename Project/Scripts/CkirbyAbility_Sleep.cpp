@@ -182,7 +182,7 @@ void CKirbyAbility_Sleep::AttackEndEnter()
     PLAYERCTRL->LockDirection();
     PLAYERCTRL->LockJump();
 
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true);
 
     PLAYERUNIT->BuffHP(30.f);

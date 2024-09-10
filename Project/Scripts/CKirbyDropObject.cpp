@@ -21,7 +21,7 @@ void CKirbyDropObject::tick()
     case ObjectCopyType::LIGHT: {
         if (PLAYER->Animator()->IsFinish())
         {
-            PLAYERFSM->SetGlobalState(false);
+            PLAYERFSM->SetStateLock(false);
             if (PLAYERCTRL->IsGround())
             {
                 ChangeState(L"IDLE");
@@ -43,7 +43,7 @@ void CKirbyDropObject::Enter()
         PLAYERFSM->ChangeObjectCopy(ObjectCopyType::NONE);
     }
 
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true);
     PLAYERFSM->GetPrevObject()->DropObjectEnter();
 }

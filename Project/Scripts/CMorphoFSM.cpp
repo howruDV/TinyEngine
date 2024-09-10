@@ -645,7 +645,7 @@ void CMorphoFSM::OffWeaponRTrigger()
 
 void CMorphoFSM::ResetFSM()
 {
-    SetGlobalState(false);
+    SetStateLock(false);
     SetPattern(MorphoPatternType::NONE);
     ClearComboLevel();
     EnableRender();

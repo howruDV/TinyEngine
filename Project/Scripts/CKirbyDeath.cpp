@@ -124,7 +124,7 @@ void CKirbyDeath::Enter()
 
     ForceDirInfo DirInfo = {ForceDirType::STAGEEVENT, Dir, true};
     PLAYERCTRL->ForceDir(DirInfo);
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     GetOwner()->Animator()->Play(ANIMPREFIX("Death"), false);
 
     PLAYERCTRL->LockInput();

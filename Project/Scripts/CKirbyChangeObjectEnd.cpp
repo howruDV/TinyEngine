@@ -23,7 +23,7 @@ void CKirbyChangeObjectEnd::tick()
     case ObjectCopyType::LIGHT: {
         if (PLAYER->Animator()->IsFinish())
         {
-            PLAYERFSM->SetGlobalState(false);
+            PLAYERFSM->SetStateLock(false);
             ChangeState(L"IDLE");
         }
     }
@@ -33,7 +33,7 @@ void CKirbyChangeObjectEnd::tick()
 
 void CKirbyChangeObjectEnd::Enter()
 {
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->GetCurObject()->ChangeObjectEndEnter();
 
     // 변신 중일 땐 커비가 이미시브 효과를 받지않도록 한다.

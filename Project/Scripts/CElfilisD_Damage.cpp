@@ -38,7 +38,7 @@ void CElfilisD_Damage::Enter_Step()
         GetOwner()->Transform()->SetWorldPos(Vec3());
         GetOwner()->Transform()->SetWorldRotation(Vec3());
 
-        ELFFSM->SetGlobalState(true);
+        ELFFSM->SetStateLock(true);
 
         CBossMgr::GetBossFlowMgr()->ChangeFlow(BossLevelFlow::DemoPlay);
 
@@ -107,7 +107,7 @@ void CElfilisD_Damage::Process()
 
     if (t >= 1.f)
     {
-        ELFFSM->SetGlobalState(false);
+        ELFFSM->SetStateLock(false);
         ELFFSM->ChangeStateGroup(ElfilisStateGroup::DEMO, L"DEMO_APPEAR2_JUMP");
     }
 }

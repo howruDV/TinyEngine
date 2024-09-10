@@ -15,7 +15,7 @@ void CKirbyDeathEnd::tick()
 
 void CKirbyDeathEnd::Enter()
 {
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     GetOwner()->Animator()->Play(ANIMPREFIX("DeathWait"));
 
     PLAYERCTRL->LockDirection();

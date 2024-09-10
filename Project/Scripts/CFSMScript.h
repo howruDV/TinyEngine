@@ -7,7 +7,7 @@ class CFSMScript : public CScript
 {
 protected:
     CUnitScript* m_Unit;
-    bool m_bGlobalState;
+    bool m_bStateLock;
 
 private:
     map<wstring, CState*> m_mapState;
@@ -27,15 +27,15 @@ protected:
     void ChangeState_proc(CState* _pNextState);
 
 public:
-    void SetGlobalState(bool _GlobalState) { m_bGlobalState = _GlobalState; }
-    void LockChangeState() { m_bGlobalState = true; }
-    void UnlockChangeState() { m_bGlobalState = false; }
+    void SetStateLock(bool _Lock) { m_bStateLock = _Lock; }
+    void LockState() { m_bStateLock = true; }
+    void UnlockState() { m_bStateLock = false; }
 
     virtual CUnitScript* GetUnit() { return m_Unit; }
     const map<wstring, CState*>& GetStates() { return m_mapState; }
     CState* GetCurState() { return m_CurState; }
     CState* GetPrevState() { return m_PrevState; }
-    bool IsGlobalState() { return m_bGlobalState; }
+    bool IsStateLock() { return m_bStateLock; }
 
 public:
     virtual UINT SaveToLevelFile(FILE* _File) override;

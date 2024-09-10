@@ -19,7 +19,7 @@ void CKirbyStuffedDamage::tick()
 
     if (m_AccTime > m_Duration && PLAYERCTRL->IsGround())
     {
-        PLAYERFSM->SetGlobalState(false);
+        PLAYERFSM->SetStateLock(false);
         ChangeState(L"STUFFED_IDLE");
     }
 }
@@ -42,7 +42,7 @@ void CKirbyStuffedDamage::Enter()
     PLAYERCTRL->SetFrictionMode(true);
     PLAYERCTRL->SetGravity(-35.f);
 
-    PLAYERFSM->SetGlobalState(true);
+    PLAYERFSM->SetStateLock(true);
     PLAYERFSM->SetInvincible(true, 3.f);
     PLAYERFSM->SetEmissive(true, 3.f);
     PLAYERFSM->SetUnstuffReverse(false);
