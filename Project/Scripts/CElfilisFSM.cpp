@@ -284,7 +284,7 @@ ElfilisStateGroup CElfilisFSM::FindNextStateGroup() const
         {
             float Rand = GetRandomfloat(1, 100);
 
-            if (Rand <= 50.f)
+            if (Rand <= 20.f)
             {
                 return ElfilisStateGroup::AirSmallAtk1;
             }
