@@ -135,7 +135,7 @@ public:
 
 private:
     void ChangeStateGroup_Random(ElfilisStateGroup _Group);
-    void ChangeStateGroup_Set(ElfilisStateGroup _Group, const wstring& _State);
+    void ChangeStateGroup_Fixed(ElfilisStateGroup _Group, const wstring& _State);
     void SetStateGroup(ElfilisStateGroup _Group);
     void AddGroupPublicState(ElfilisStateGroup _Group, const wstring& _StateName, CState* _State);
     void AddGroupPrivateState(ElfilisStateGroup _Group, const wstring& _StateName, CState* _State);

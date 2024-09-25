@@ -77,14 +77,6 @@ void CBossHitbox::tick()
     }
 }
 
-// 예상문제 : 제일 마지막에 충돌된 몬스터 기준으로 데미지 반복됨
-// 시나리오 : 
-// - 으르르피랑 먼저 부딪힘
-// - 4초 지나는 시점에 황소랑 충돌
-// - 데미지 반복해주려고 체크하던 m_AccTime 초기화됨
-// - 마지막으로 충돌한 몬스터(황소) 이후 5초 지나서야
-// - 충돌했던 모든 몬스터(으르르피, 황소) 모두 데미지 다시 받을 수 있음
-// 종합의견 : 데미지 반복 시간이 짧으니 (0.1초~) 문제 뚜렷이 드러나기 전까진 그냥 쓰자 
 void CBossHitbox::OnTriggerEnter(CCollider* _OtherCollider)
 {
     UINT Layer = _OtherCollider->GetOwner()->GetLayerIdx();

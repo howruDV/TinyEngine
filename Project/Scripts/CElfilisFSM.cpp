@@ -100,7 +100,7 @@ void CElfilisFSM::ChangeStateGroup(ElfilisStateGroup _Group, const wstring& _Sta
     }
     else
     {
-        ChangeStateGroup_Set(_Group, _State);
+        ChangeStateGroup_Fixed(_Group, _State);
     }
 }
 
@@ -139,7 +139,7 @@ void CElfilisFSM::ChangeStateGroup_Random(ElfilisStateGroup _Group)
     m_StateSelectionCount[(int)_Group][RandState]++;
 }
 
-void CElfilisFSM::ChangeStateGroup_Set(ElfilisStateGroup _Group, const wstring& _State)
+void CElfilisFSM::ChangeStateGroup_Fixed(ElfilisStateGroup _Group, const wstring& _State)
 {
     if (m_StateGroup.find(_Group) == m_StateGroup.cend())
         return;
@@ -569,17 +569,17 @@ void CElfilisFSM::ProcPatternStep()
     case ElfilisPatternType::Appear1: {
         if (m_PatternStep == 0)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::GroundMove, L"GROUND_MOVE_TELEPORT");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::GroundMove, L"GROUND_MOVE_TELEPORT");
             Animator()->Play(ANIMPREFIX("Wait"), false, false, 1.5f, 0.f);
             Animator()->SetClipFrameIndex(1);
         }
         else if (m_PatternStep == 1)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::GroundMove, L"GROUND_MOVE_TELEPORT");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::GroundMove, L"GROUND_MOVE_TELEPORT");
         }
         else if (m_PatternStep == 2)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::GroundAtkNear, L"GROUND_ATK_NORMALTELEPORT_L");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::GroundAtkNear, L"GROUND_ATK_NORMALTELEPORT_L");
             bFinish = true;
         }
     }
@@ -591,7 +591,7 @@ void CElfilisFSM::ProcPatternStep()
         }
         else if (m_PatternStep == 1) // 진입 : 외부호출
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirSmallAtk1, L"AIR_ATKS_RAYARROW_UP");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirSmallAtk1, L"AIR_ATKS_RAYARROW_UP");
         }
         else if (m_PatternStep == 2)
         {
@@ -599,7 +599,7 @@ void CElfilisFSM::ProcPatternStep()
         }
         else if (m_PatternStep == 3) // 진입 : 외부호출
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
             bFinish = true;
         }
     }
@@ -611,19 +611,19 @@ void CElfilisFSM::ProcPatternStep()
         }
         else if (m_PatternStep == 1) // 진입 : 외부호출
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::GroundToAir, L"GROUND_TOAIR_TELEPORT");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::GroundToAir, L"GROUND_TOAIR_TELEPORT");
         }
         else if (m_PatternStep == 2)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirIdle, L"AIR_IDLE");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirIdle, L"AIR_IDLE");
         }
         else if (m_PatternStep == 3) // 진입 : 외부호출
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirSmallAtk1, L"AIR_ATKS_RAYARROW_UP");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirSmallAtk1, L"AIR_ATKS_RAYARROW_UP");
         }
         else if (m_PatternStep == 4)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirSmallAtk1, L"AIR_ATKS_RAYARROW_UP");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirSmallAtk1, L"AIR_ATKS_RAYARROW_UP");
         }
         else if (m_PatternStep == 5)
         {
@@ -631,7 +631,7 @@ void CElfilisFSM::ProcPatternStep()
         }
         else if (m_PatternStep == 6) // 진입 : 외부호출
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
             bFinish = true;
         }
     }
@@ -639,15 +639,15 @@ void CElfilisFSM::ProcPatternStep()
     case ElfilisPatternType::StabCombo: {
         if (m_PatternStep == 0)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
         }
         else if (m_PatternStep == 1)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::GroundToAir, L"GROUND_TOAIR_TELEPORT");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::GroundToAir, L"GROUND_TOAIR_TELEPORT");
         }
         else if (m_PatternStep == 2)
         {
-            ChangeStateGroup_Set(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
+            ChangeStateGroup_Fixed(ElfilisStateGroup::AirToGround, L"AIR_TOGROUND_STAB");
             bFinish = true;
         }
     }

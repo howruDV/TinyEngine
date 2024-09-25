@@ -90,7 +90,7 @@ void CMorphoTrackingSoul::Appear()
 void CMorphoTrackingSoul::Tracking()
 {
     Vec3 CurPos = Transform()->GetWorldPos();
-    CurPos.y -= 60.f;
+    CurPos.y -= 60.f; // fbx model footPos
     Vec3 Dir = m_Target->Transform()->GetWorldPos() - CurPos;
     Dir.Normalize();
     Vec3 Force = Dir * m_Speed;

@@ -193,6 +193,8 @@ void CElfilisA_SlashCombo::Progress()
 
     // Camera Shake
     Vec3 PlayerPos = PLAYER->Transform()->GetWorldPos();
+    PlayerPos.y = 0.f;
+
     if (!m_bCamShake && CurPos.Cross(PlayerPos).Dot(m_PrevPos.Cross(PlayerPos)) < 0.f)
     {
         m_bCamShake = true;
@@ -207,9 +209,8 @@ void CElfilisA_SlashCombo::Progress()
 
         if (m_SpawnDist >= SpawnBetween && m_StabRockPref != nullptr)
         {
-            CGameObject* pRock = m_StabRockPref->Instantiate();
-            CMomentaryObjScript* pScript = pRock->GetScript<CMomentaryObjScript>();
             m_SpawnDist -= SpawnBetween;
+            CGameObject* pRock = m_StabRockPref->Instantiate();
 
             Vec3 NewPos = GetOwner()->Transform()->GetWorldPos();
             NewPos.y = 0.f;
@@ -221,9 +222,13 @@ void CElfilisA_SlashCombo::Progress()
             }
 
             pRock->Transform()->SetWorldPos(NewPos);
-            pRock->Transform()->Slerp(NewDir, 1.f);
+            pRock->Transform()->SetDirection(NewDir);
 
-            pScript->SetPlayTime(5.f);
+            CMomentaryObjScript* pScript = pRock->GetScript<CMomentaryObjScript>();
+            if (pScript)
+            {
+                pScript->SetPlayTime(5.f);
+            }
 
             GamePlayStatic::SpawnGameObject(pRock, LAYER_DYNAMIC);
         }

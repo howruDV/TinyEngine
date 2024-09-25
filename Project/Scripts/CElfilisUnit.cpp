@@ -3,6 +3,7 @@
 #include "CBossMgr.h"
 #include "CElfilisFSM.h"
 #include "CState.h"
+#include "CBossLevelFlowMgr.h"
 
 CElfilisUnit::CElfilisUnit()
     : CUnitScript(ELFILISUNIT)
@@ -40,8 +41,6 @@ CElfilisUnit::~CElfilisUnit()
 {
 }
 
-#include "CBossMgr.h"
-#include "CBossLevelFlowMgr.h"
 void CElfilisUnit::tick()
 {
     CUnitScript::tick();
@@ -50,7 +49,7 @@ void CElfilisUnit::tick()
     if (m_CurInfo.HP <= 0.f && !ELFFSM->IsResist())
     {
         ElfilisStateGroup CurStateGroup = ELFFSM->GetCurStateGroup();
-        if ((CurStateGroup >= ElfilisStateGroup::GroundIdle || CurStateGroup <= ElfilisStateGroup::GroundAtkFar))
+        if (CurStateGroup >= ElfilisStateGroup::GroundIdle || CurStateGroup <= ElfilisStateGroup::GroundAtkFar)
         {
             //AddResistHP();
             ELFFSM->ResetFSM();

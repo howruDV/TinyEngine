@@ -60,6 +60,7 @@ void CMorphoMoveG_TeleportNear::Enter_Step()
         m_AfterPos = PLAYER->Transform()->GetWorldPos() + Dist;
         m_AfterPos.y = 0.f;
 
+        // map limit
         if (m_AfterPos.x < 0 && m_AfterPos.x < -MapSize.x + MapOffset.x)
         {
             m_AfterPos.x = -MapSize.x + MapOffset.x;

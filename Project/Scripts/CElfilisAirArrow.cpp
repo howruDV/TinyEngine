@@ -77,7 +77,7 @@ void CElfilisAirArrow::StartSpawn()
     GetOwner()->Transform()->SetWorldPos(NewPos);
 
     // Rotation
-    GetOwner()->Transform()->Slerp(m_InitDir[(UINT)DIR_TYPE::FRONT], 1.f);
+    GetOwner()->Transform()->SetDirection(m_InitDir[(UINT)DIR_TYPE::FRONT]);
 
     // Ready Dir
     m_ReadyDir = m_InitPos - m_InitDir[(UINT)DIR_TYPE::UP] * 300.f;

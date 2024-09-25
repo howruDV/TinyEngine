@@ -310,11 +310,9 @@ void CKirbyMoveController::Move()
     // =========================
     // Velocity 계산
     // =========================
-
     // 수평 방향 이동속도 계산
     // Guard시에는 이전프레임의 이동속도를 남겨 감속시킴
 
-    
     if (m_bActiveFriction)
     {
         m_Accel.x = -m_MoveVelocity.x * m_Friction;
@@ -348,13 +346,11 @@ void CKirbyMoveController::Move()
         m_MoveVelocity.y = m_JumpPower;
     }
 
-
     // 중력 적용
     m_Accel.y += m_Gravity;
 
     // 수직 방향 이동속도 계산
     m_MoveVelocity.y += m_Accel.y * DT;
-
 
     // AddVelocity 적용
     if (m_AddVelocity.Length() != 0.f)
@@ -434,11 +430,7 @@ void CKirbyMoveController::Move()
     {
         m_MoveVelocity.y = 0.f;
     }
-
 }
-
-
-
 
 UINT CKirbyMoveController::SaveToLevelFile(FILE* _File)
 {
